@@ -7,7 +7,7 @@ services:
       - RAVEN_Setup_Mode=None
       - RAVEN_Docker_Port=8080 # Port to access RavenDB
     ports:
-      - "8080:8080" # Expose the RavenDB port
+      - "8090:8080" # Expose the RavenDB port
     volumes:
       - ./data:/var/lib/ravendb/data # Persistent data storage
 
