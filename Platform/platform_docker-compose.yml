@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.10-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - rabbitmq_network
+    restart: always
+
+networks:
+  rabbitmq_network:
