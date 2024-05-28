@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  reviewservice:
+    image: brhv/psu_micro_reviewservice:latest
+    container_name: reviewservice
+    ports:
+      - "9090:8080"
+    networks:
+      - micronetwork
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9000:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+    depends_on:
+      - reviewservice
+    networks:
+      - micronetwork
+
+networks:
+  micronetwork : {}
